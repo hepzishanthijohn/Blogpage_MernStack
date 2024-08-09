@@ -13,7 +13,7 @@ export default function Header() {
   useEffect(() => {
     const fetchUserInfo = async () => {
       try {
-        const response = await axios.get(`http://localhost:5000/api/auth/profile`, {
+        const response = await axios.get(`https://blogpage-mernstack.onrender.com/api/auth/profile`, {
           withCredentials: true // Include credentials (cookies) with the request
         });
         setUserInfo(response.data);

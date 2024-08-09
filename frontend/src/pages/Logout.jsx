@@ -15,7 +15,7 @@ const Logout = () => {
 
   const handleLogout = async () => {
     try {
-      await axios.post('http://localhost:5000/users/logout', {}, {
+      await axios.post('https://blogpage-mernstack.onrender.com/users/logout', {}, {
         withCredentials: true, // Include credentials in the request
       });
       setUserInfo(null);

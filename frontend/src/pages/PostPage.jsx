@@ -12,7 +12,7 @@ export default function PostPage() {
   useEffect(() => {
     const fetchPostInfo = async () => {
       try {
-        const response = await axios.get(`http://localhost:5000/api/posts/post/${id}`);
+        const response = await axios.get(`https://blogpage-mernstack.onrender.com/api/posts/post/${id}`);
         setPostInfo(response.data);
       } catch (error) {
         console.error('Error fetching post details:', error);

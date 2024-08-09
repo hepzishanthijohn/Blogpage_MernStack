@@ -23,7 +23,7 @@ export default function CreatePost() {
     }
 
     try {
-      const response = await axios.post('http://localhost:5000/api/posts/upload', data, {
+      const response = await axios.post('https://blogpage-mernstack.onrender.com/api/posts/upload', data, {
         headers: {
           'Content-Type': 'multipart/form-data',
         }

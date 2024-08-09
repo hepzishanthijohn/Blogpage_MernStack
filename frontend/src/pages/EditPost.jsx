@@ -12,7 +12,7 @@ export default function EditPost() {
   const [redirect, setRedirect] = useState(false);
 
   useEffect(() => {
-    axios.get(`http://localhost:5000/api/posts/post/${id}`)
+    axios.get(`https://blogpage-mernstack.onrender.com/api/posts/post/${id}`)
       .then(response => {
         const postInfo = response.data;
         setTitle(postInfo.title);
@@ -36,7 +36,7 @@ export default function EditPost() {
     }
 
     try {
-      const response = await axios.put(`http://localhost:5000/api/posts/update/${id}`, data, {
+      const response = await axios.put(`https://blogpage-mernstack.onrender.com/api/posts/update/${id}`, data, {
         headers: {
           'Content-Type': 'multipart/form-data'
         },
