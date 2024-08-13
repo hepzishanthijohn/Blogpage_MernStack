@@ -8,7 +8,7 @@ export default function EditPost() {
   const [title, setTitle] = useState('');
   const [summary, setSummary] = useState('');
   const [content, setContent] = useState('');
-  const [files, setFiles] = useState('');
+  const [files, setFiles] = useState(null);
   const [redirect, setRedirect] = useState(false);
 
   useEffect(() => {
@@ -31,12 +31,12 @@ export default function EditPost() {
     data.append('summary', summary);
     data.append('content', content);
     data.append('id', id);
-    if (files?.[0]) {
-      data.append('image', files[0]);
+    if (files) {
+      data.append('image', files);
     }
 
     try {
-      const response = await axios.put(`https://blogpage-mernstack.onrender.com/api/posts/update/${id}`, data, {
+      const response = await axios.put(`http://localhost:5000/api/posts/update/${id}`, data, {
         headers: {
           'Content-Type': 'multipart/form-data'
         },
@@ -74,7 +74,7 @@ export default function EditPost() {
           <input
             type="file"
             name="image"
-            onChange={ev => setFiles(ev.target.files)}
+            onChange={ev => setFiles(ev.target.files[0])}
           />
           <Editor className='.ck-editor__editable_inline' onChange={setContent} value={content} />
           <button style={{ marginTop: '5px' }} className="btn primary">Update post</button>

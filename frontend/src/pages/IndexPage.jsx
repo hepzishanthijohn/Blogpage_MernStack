@@ -1,5 +1,6 @@
 import Post from "../components/Post";
 import {useEffect, useState} from "react";
+import Header from "../components/Header";
 import axios from 'axios'
 
 export default function IndexPage() {
@@ -19,6 +20,7 @@ export default function IndexPage() {
 
   return (
     <>
+    <Header/>
     <section className='posts'>
     {posts.length > 0 ?(<div className="container posts__container">
       {posts.map((post) => (

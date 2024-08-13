@@ -63,59 +63,59 @@ router.post('/upload', upload.single('image'), async (req, res) => {
     }
   });
 
- // PUT route to update an existing post with an optional image upload
-router.put('/update/:id', upload.single('image'), async (req, res) => {
-  // Extract additional fields from the request body
-  const { title, summary, content } = req.body;
-  const { id } = req.params; // Get post ID from route parameter
-
-  // Check if required fields are present
-  if (!title || !summary || !content) {
+  router.put('/update/:id', upload.single('image'), async (req, res) => {
+    const { title, summary, content } = req.body;
+    const { id } = req.params;
+  
+    if (!title || !summary || !content) {
       return res.status(400).json({
-          success: false,
-          message: 'Missing required fields'
+        success: false,
+        message: 'Missing required fields'
       });
-  }
-
-  try {
-      // Find the existing post by ID
+    }
+  
+    try {
       const post = await Post.findById(id);
       if (!post) {
-          return res.status(404).json({
-              success: false,
-              message: 'Post not found'
-          });
+        return res.status(404).json({
+          success: false,
+          message: 'Post not found'
+        });
       }
-
-      // Update post fields
+  
       post.title = title;
       post.summary = summary;
       post.content = content;
-
-      // If an image file is uploaded, upload it to Cloudinary and update the post
+  
       if (req.file) {
+        try {
           const result = await cloudinary.uploader.upload(req.file.path, { folder: 'blogpage-website' });
           post.image = result.secure_url;
+        } catch (uploadErr) {
+          console.error('Cloudinary upload error:', uploadErr);
+          return res.status(500).json({
+            success: false,
+            message: 'Error uploading image'
+          });
+        }
       }
-
-      // Save the updated post to the database
+  
       await post.save();
-
-      // Respond with success
+  
       res.status(200).json({
-          success: true,
-          message: "Post updated successfully",
-          data: post
+        success: true,
+        message: "Post updated successfully",
+        data: post
       });
-  } catch (err) {
-      console.log(err);
+    } catch (err) {
+      console.error('Database or server error:', err);
       res.status(500).json({
-          success: false,
-          message: "Error updating post"
+        success: false,
+        message: "Error updating post"
       });
-  }
-});
-
+    }
+  });
+  
   
 
   router.get('/post', async (req,res) => {

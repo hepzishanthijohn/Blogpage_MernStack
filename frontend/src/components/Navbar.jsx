@@ -6,7 +6,7 @@ import { FaBars } from 'react-icons/fa';
 import { AiOutlineClose } from 'react-icons/ai';
 import axios from 'axios';
 
-export default function Header() {
+export default function Navbar() {
   const { setUserInfo, userInfo } = useContext(UserContext);
   const [isNavShowing, setIsNavShowing] = useState(window.innerWidth > 800 ? true : false);
   
