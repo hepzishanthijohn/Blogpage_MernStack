@@ -22,7 +22,7 @@ export default function LoginPage() {
   // Handle form submission
   const handleSubmit = async (values, { setSubmitting, setErrors }) => {
     try {
-      const response = await axios.post('https://blogpage-mernstack.onrender.com/api/auth/login', 
+      const response = await axios.post('https://blogpage-mern-stack-gi6a.vercel.app/api/auth/login', 
         values,{
           headers:{'Content-Type':'application/json'},
           credentials: 'include'

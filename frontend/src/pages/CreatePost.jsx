@@ -23,7 +23,7 @@ export default function CreatePost() {
     }
 
     try {
-      const response = await axios.post('https://blogpage-mernstack.onrender.com/api/posts/upload', data, {
+      const response = await axios.post('https://blogpage-mern-stack-gi6a.vercel.app/api/posts/upload', data, {
         headers: {
           'Content-Type': 'multipart/form-data',
         }

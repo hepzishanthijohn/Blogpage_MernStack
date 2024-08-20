@@ -21,7 +21,7 @@ export default function RegisterPage() {
   // Handle form submission
   const handleSubmit = async (values, { setSubmitting, setErrors }) => {
     try {
-      const response = await axios.post('https://blogpage-mernstack.onrender.com/api/auth/register', values, {
+      const response = await axios.post('https://blogpage-mern-stack-gi6a.vercel.app/api/auth/register', values, {
         headers: { 'Content-Type': 'application/json' }
       });
 

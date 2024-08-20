@@ -13,7 +13,7 @@ export default function Navbar() {
   useEffect(() => {
     const fetchUserInfo = async () => {
       try {
-        const response = await axios.get(`https://blogpage-mernstack.onrender.com/api/auth/profile`, {
+        const response = await axios.get(`https://blogpage-mern-stack-gi6a.vercel.app/api/auth/profile`, {
           withCredentials: true // Include credentials (cookies) with the request
         });
         setUserInfo(response.data);

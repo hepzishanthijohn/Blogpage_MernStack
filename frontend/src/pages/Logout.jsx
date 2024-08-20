@@ -15,7 +15,7 @@ const Logout = () => {
 
   const handleLogout = async () => {
     try {
-      await axios.post('https://blogpage-mernstack.onrender.com/users/logout', {}, {
+      await axios.post('https://blogpage-mern-stack-gi6a.vercel.app/users/logout', {}, {
         withCredentials: true, // Include credentials in the request
       });
       setUserInfo(null);
