@@ -33,7 +33,7 @@ export default function IndexPage() {
         image={post.image} // Ensure your API returns cover images
         content={post.content} /></div>
       ))}
-    </div>) : <h2 className='center'>No posts found</h2>}
+    </div>) : <h2 className='center'>Loading...</h2>}
     </section>
       
       
